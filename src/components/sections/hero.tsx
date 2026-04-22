@@ -34,7 +34,7 @@ const Hero = () => {
     <Section 
       size="full" 
       variant="dark" 
-      className="relative overflow-hidden !px-0 pt-20"
+      className="relative overflow-hidden !px-0 pt-20 !min-h-0 items-stretch"
       style={{
         background: `
           radial-gradient(
@@ -52,7 +52,7 @@ const Hero = () => {
       }}
     >
       <div ref={container}>
-      <SplitGrid ratio="3:2" className="min-h-[90vh] md:h-screen gap-0">
+      <SplitGrid ratio="3:2" className="min-h-[min(72vh,52rem)] gap-0 md:min-h-[min(68vh,48rem)]">
       <div
         className="relative flex flex-col justify-end p-8 md:p-20"
         style={{

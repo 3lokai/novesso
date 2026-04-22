@@ -66,7 +66,7 @@
   --color-bg: var(--navy-dark);
   --color-surface: var(--navy-deep);
   --color-text: var(--offwhite);
-  --color-text-muted: rgba(248, 247, 244, 0.62);
+  --color-text-muted: rgba(248, 247, 244, 0.72);
   --color-border: rgba(248, 247, 244, 0.12);
 
   --background: var(--navy-dark);
@@ -75,11 +75,12 @@
   --card-foreground: var(--offwhite);
   --popover: var(--navy-deep);
   --popover-foreground: var(--offwhite);
-  --primary: var(--gold);
-  --primary-foreground: var(--navy-dark);
-  --secondary: color-mix(in srgb, white 12%, var(--navy-deep));
+  /* Keep --primary as navy so Section variant="dark" stays dark-background/light-text */
+  --primary: var(--navy-deep);
+  --primary-foreground: var(--offwhite);
+  --secondary: color-mix(in srgb, white 10%, var(--navy-deep));
   --secondary-foreground: var(--offwhite);
-  --muted: color-mix(in srgb, white 10%, var(--navy-dark));
+  --muted: color-mix(in srgb, white 8%, var(--navy-dark));
   --muted-foreground: var(--color-text-muted);
   --accent: var(--gold);
   --accent-foreground: var(--navy-dark);

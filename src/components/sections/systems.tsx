@@ -49,30 +49,30 @@ const Systems = () => {
   }
 
   return (
-    <Section id="collections" size="lg" variant="dark" className="bg-[var(--navy-dark)] text-primary-foreground overflow-hidden !px-0">
+    <Section id="collections" size="lg" variant="dark" className="bg-[var(--navy-dark)] text-[var(--offwhite)] overflow-hidden !px-0">
       <div ref={container}>
       <Container className="mb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <Stack gap="md" className="max-w-xl text-left">
-            <h2 className="h2 text-primary-foreground">Our Systems</h2>
-            <p className="lead text-primary-foreground/60">
+            <h2 className="h2">Our Systems</h2>
+            <p className="lead text-[var(--offwhite)]/60">
               A curated suite of technical solutions designed to coexist in harmony.
             </p>
           </Stack>
           <div className="flex items-center gap-6 group cursor-pointer">
             <span className="label opacity-40 group-hover:opacity-100 transition-opacity">View All Systems</span>
-            <div className="w-12 h-12 rounded-sm border border-primary-foreground/20 flex items-center justify-center group-hover:border-accent transition-colors duration-500">
-              <ArrowRight size={18} className="text-accent" />
+            <div className="w-12 h-12 rounded-sm border border-[var(--offwhite)]/20 flex items-center justify-center group-hover:border-[var(--gold)] transition-colors duration-500">
+              <ArrowRight size={18} className="text-[var(--gold)]" />
             </div>
           </div>
         </div>
       </Container>
 
-      <div className="flex flex-col md:flex-row min-h-[600px] border-t border-primary-foreground/10">
+      <div className="flex flex-col md:flex-row min-h-[600px] border-t border-[var(--offwhite)]/10">
         {categories.map((cat, idx) => (
           <div
             key={cat.title}
-            className="system-card relative group overflow-hidden md:flex-1 h-[600px] border-b md:border-b-0 md:border-r border-primary-foreground/10 last:border-0 cursor-pointer"
+            className="system-card relative group overflow-hidden md:flex-1 h-[600px] border-b md:border-b-0 md:border-r border-[var(--offwhite)]/10 last:border-0 cursor-pointer"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -85,18 +85,18 @@ const Systems = () => {
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 image-overlay-bottom" />
-            <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col justify-end p-8 md:p-12">
-              <span className="text-[10px] uppercase tracking-[0.4em] mb-4 text-accent/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+            <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col justify-end p-8 md:p-12 text-[var(--offwhite)]">
+              <span className="text-[10px] uppercase tracking-[0.4em] mb-4 text-[var(--gold)]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                 0{idx + 1}
               </span>
               <h3 className="text-3xl md:text-5xl font-display mb-2">{cat.title}</h3>
               
-              <p className="text-primary-foreground/40 font-light opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
+              <p className="text-[var(--offwhite)]/40 font-light opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
                 {cat.desc}
               </p>
               <div className="mt-8 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Details</span>
-                <Plus size={14} className="text-accent" />
+                <Plus size={14} className="text-[var(--gold)]" />
               </div>
             </div>
           </div>

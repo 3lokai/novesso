@@ -4,10 +4,9 @@
 export const SITE_CATALOG_HREF = '/catalog' as const
 
 export const SITE_CATALOG_ITEMS = [
-  { href: '/docs', label: 'Docs' },
-  { href: '/templates', label: 'Templates' },
-  { href: '/community', label: 'Community' },
-  { href: '/changelog', label: 'Changelog' },
+  { href: '/wardrobes', label: 'WARDROBES' },
+  { href: '/sliding-systems', label: 'SLIDING SYSTEMS' },
+  { href: '/partitions', label: 'PARTITIONS' },
 ] as const
 
 export const SITE_PRIMARY_NAV = [

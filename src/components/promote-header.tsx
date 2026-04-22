@@ -4,16 +4,16 @@ import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
 import { Container, Stack } from '@/components/primitives'
 import { Button } from '@/components/ui/button'
 import {
-  BookOpen,
-  Layout,
+  Columns,
+  Dresser,
   List,
   Moon,
-  Scroll,
+  SlidersHorizontal,
   Sun,
-  UsersThree,
   X,
 } from '@phosphor-icons/react'
 import { cn } from '@/lib/utils'
@@ -23,33 +23,6 @@ import {
   SITE_PRIMARY_NAV,
   SITE_TAGLINE,
 } from '@/lib/site-nav'
-
-const THEME_CHANGE_EVENT = 'novesso-theme-change'
-
-function subscribeTheme(onStoreChange: () => void) {
-  if (typeof window === 'undefined') return () => {}
-  const media = window.matchMedia('(prefers-color-scheme: dark)')
-  const handler = () => onStoreChange()
-  media.addEventListener('change', handler)
-  window.addEventListener('storage', handler)
-  window.addEventListener(THEME_CHANGE_EVENT, handler)
-  return () => {
-    media.removeEventListener('change', handler)
-    window.removeEventListener('storage', handler)
-    window.removeEventListener(THEME_CHANGE_EVENT, handler)
-  }
-}
-
-function getThemeSnapshot(): boolean {
-  if (typeof window === 'undefined') return false
-  const stored = localStorage.getItem('theme')
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  return stored ? stored === 'dark' : systemDark
-}
-
-function getServerThemeSnapshot(): boolean {
-  return false
-}
 
 // GSAP Imports
 import gsap from 'gsap'
@@ -69,21 +42,17 @@ const RESOURCE_META: Record<
   (typeof SITE_CATALOG_ITEMS)[number]['href'],
   { desc: string; icon: React.ReactNode }
 > = {
-  '/docs': {
-    desc: 'Guides, API, tutorials, and examples.',
-    icon: <BookOpen size={20} weight="light" aria-hidden />,
+  '/wardrobes': {
+    desc: 'Built-in and walk-in wardrobe systems tailored to your space.',
+    icon: <Dresser size={20} weight="light" aria-hidden />,
   },
-  '/templates': {
-    desc: 'Production-ready starters for common use cases.',
-    icon: <Layout size={20} weight="light" aria-hidden />,
+  '/sliding-systems': {
+    desc: 'Smooth sliding doors and panel hardware for modern interiors.',
+    icon: <SlidersHorizontal size={20} weight="light" aria-hidden />,
   },
-  '/community': {
-    desc: 'Join discussions and find support.',
-    icon: <UsersThree size={20} weight="light" aria-hidden />,
-  },
-  '/changelog': {
-    desc: 'What shipped and when, with details.',
-    icon: <Scroll size={20} weight="light" aria-hidden />,
+  '/partitions': {
+    desc: 'Room dividers and glass partitions for flexible layouts.',
+    icon: <Columns size={20} weight="light" aria-hidden />,
   },
 }
 
@@ -99,24 +68,16 @@ export default function PromoteHeader() {
   const headerRef = React.useRef<HTMLElement>(null)
   const containerRef = React.useRef<HTMLDivElement>(null)
 
-  const isDark = React.useSyncExternalStore(
-    subscribeTheme,
-    getThemeSnapshot,
-    getServerThemeSnapshot
-  )
+  // Delegate theme management entirely to next-themes — no manual DOM toggling
+  const { resolvedTheme, setTheme } = useTheme()
+  const isDark = resolvedTheme === 'dark'
   const isDarkRef = React.useRef(isDark)
   React.useLayoutEffect(() => {
     isDarkRef.current = isDark
   }, [isDark])
 
-  React.useLayoutEffect(() => {
-    document.documentElement.classList.toggle('dark', isDark)
-  }, [isDark])
-
   const toggleTheme = () => {
-    const next = !isDark
-    localStorage.setItem('theme', next ? 'dark' : 'light')
-    window.dispatchEvent(new Event(THEME_CHANGE_EVENT))
+    setTheme(isDark ? 'light' : 'dark')
   }
 
   const isActive = (href: string) => (href === '/' ? activePath === '/' : activePath?.startsWith(href))
@@ -124,7 +85,7 @@ export default function PromoteHeader() {
   const navLinkClass = (active: boolean) =>
     cn(
       'label transition-colors px-4 py-2 hover:text-accent nav-link-item',
-      active ? 'text-accent' : 'text-primary/60'
+      active ? 'text-accent' : 'text-foreground/55'
     )
 
   // GSAP Animations — intro uses transform on the wrapper root; clear it when done so `position: sticky` works on <header>
@@ -273,8 +234,8 @@ export default function PromoteHeader() {
                               {r.icon}
                             </div>
                             <Stack gap="sm">
-                              <span className="label text-[11px] text-primary">{r.title}</span>
-                              <p className="body text-[11px] text-primary/50 line-clamp-2">
+                              <span className="label text-[11px] text-foreground">{r.title}</span>
+                              <p className="body text-[11px] text-foreground/50 line-clamp-2">
                                 {r.desc}
                               </p>
                             </Stack>

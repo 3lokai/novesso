@@ -66,18 +66,18 @@ export function Footer() {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.query)}`
 
   const navLinkClass =
-    'label block w-fit text-white/75 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary'
+    'label block w-fit text-white/75 transition-colors hover:text-[var(--gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--navy-deep)]'
 
   return (
-    <footer className="border-t border-white/10 bg-primary text-primary-foreground">
+    <footer className="border-t border-white/10 bg-[var(--navy-deep)] text-[var(--offwhite)]">
       <Container className="py-14 md:py-20">
         <div className="grid grid-cols-1 items-start gap-12 md:gap-14 lg:grid-cols-12 lg:gap-10 xl:gap-12">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Stack gap="xl">
+            <Stack gap="md">
               <Link
                 href="/"
-                className="flex w-fit items-center gap-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                className="flex w-fit items-center gap-4 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--navy-deep)]"
                 aria-label="Home"
               >
                 <Image
@@ -95,9 +95,9 @@ export function Footer() {
                 {SITE_TAGLINE}
               </p>
 
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-5">
                 <div>
-                  <span className="label mb-4 block text-[10px] tracking-[0.2em] text-accent">
+                  <span className="label mb-3 block text-[10px] tracking-[0.2em] text-[var(--gold)]">
                     Follow
                   </span>
                   <div className="flex flex-wrap gap-3">
@@ -108,7 +108,7 @@ export function Footer() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={label}
-                        className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/80 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                        className="flex h-10 w-10 items-center justify-center border border-white/15 text-white/80 transition-colors hover:border-[var(--gold)] hover:text-[var(--gold)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--navy-deep)]"
                       >
                         <Icon size={20} weight="light" aria-hidden />
                       </a>
@@ -117,7 +117,7 @@ export function Footer() {
                 </div>
 
                 <div>
-                  <span className="label mb-3 block text-[10px] tracking-[0.2em] text-accent">
+                  <span className="label mb-3 block text-[10px] tracking-[0.2em] text-[var(--gold)]">
                     Support
                   </span>
                   <Stack gap="sm">
@@ -142,7 +142,7 @@ export function Footer() {
           {/* Nav — aligned with header */}
           <nav className="lg:col-span-3" aria-label="Site">
             <Stack gap="lg">
-              <span className="label text-[10px] tracking-[0.2em] text-accent">
+              <span className="label text-[10px] tracking-[0.2em] text-[var(--gold)]">
                 Explore
               </span>
 
@@ -208,8 +208,8 @@ export function Footer() {
                     className={cn(
                       'label shrink-0 border px-3 py-1.5 text-[10px] tracking-[0.12em] transition-colors',
                       active === key
-                        ? 'border-accent bg-accent text-primary'
-                        : 'border-white/20 bg-primary/70 text-white/80 hover:border-white/40 hover:text-white'
+                        ? 'border-[var(--gold)] bg-[var(--gold)] text-[var(--navy-dark)]'
+                        : 'border-white/20 bg-[var(--navy-dark)]/75 text-white/80 hover:border-white/40 hover:text-white'
                     )}
                   >
                     {loc.label}
@@ -225,7 +225,7 @@ export function Footer() {
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="shrink-0 border border-white/25 bg-primary/80 text-white hover:bg-primary-foreground hover:text-primary"
+                  className="shrink-0 border border-white/25 bg-[var(--navy-dark)]/85 text-[var(--offwhite)] hover:bg-[var(--offwhite)] hover:text-[var(--navy-deep)]"
                 >
                   <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
                     Get directions
