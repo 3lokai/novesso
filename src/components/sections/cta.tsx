@@ -5,8 +5,8 @@ import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { Button } from '@/components/ui/button'
 import { Container, Section, Stack } from '@/components/primitives'
+import { ConsultationModal } from '@/components/ui/consultation-modal'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)
@@ -16,17 +16,26 @@ const CTA = () => {
   const container = React.useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    gsap.from('.cta-content > *', {
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top 70%',
-      },
-      scale: 0.95,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 1.2,
-      ease: 'expo.out',
-    })
+    if (!container.current) return
+    const targets = container.current.querySelectorAll('.cta-content > *')
+    if (targets.length === 0) return
+
+    gsap.fromTo(
+      targets,
+      { autoAlpha: 0, scale: 0.95 },
+      {
+        autoAlpha: 1,
+        scale: 1,
+        stagger: 0.2,
+        duration: 1.2,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: container.current,
+          start: 'top 70%',
+          once: true,
+        },
+      }
+    )
   }, { scope: container })
 
   return (
@@ -49,9 +58,7 @@ const CTA = () => {
           <p className="lead text-primary-foreground/60">
             Invite us into your space. Our designers will work with you to create something truly exceptional.
           </p>
-          <Button variant="primary" size="lg">
-            Schedule Consultation
-          </Button>
+          <ConsultationModal />
         </Stack>
         </div>
       </Container>

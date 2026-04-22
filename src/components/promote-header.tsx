@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Container, Stack } from '@/components/primitives'
 import { Button } from '@/components/ui/button'
+import { ConsultationModal } from '@/components/ui/consultation-modal'
 import {
   Columns,
   Dresser,
@@ -269,9 +270,13 @@ export default function PromoteHeader() {
                 >
                   {isDark ? <Sun size={20} weight="light" /> : <Moon size={20} weight="light" />}
                 </Button>
-                <Button variant="primary" size="sm" className="header-action-item">
-                  ENQUIRE
-                </Button>
+                <ConsultationModal
+                  trigger={
+                    <Button variant="primary" size="sm" className="header-action-item">
+                      ENQUIRE
+                    </Button>
+                  }
+                />
               </div>
             </div>
 
@@ -355,7 +360,17 @@ export default function PromoteHeader() {
             <div className="pt-12 border-t border-border">
                <Stack gap="lg">
                 <span className="label text-accent">Enquiry</span>
-                <Button variant="primary" className="w-full">ENQUIRE</Button>
+                <ConsultationModal
+                  trigger={
+                    <Button
+                      variant="primary"
+                      className="w-full"
+                      onClick={() => setOpen(false)}
+                    >
+                      ENQUIRE
+                    </Button>
+                  }
+                />
                </Stack>
             </div>
 

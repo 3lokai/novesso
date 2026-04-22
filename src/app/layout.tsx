@@ -64,9 +64,15 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: ["/favicon/favicon.ico"],
   },
-  manifest: "/manifest.webmanifest",
+  manifest: "/favicon/site.webmanifest",
   category: "Interior Design",
   formatDetection: {
     telephone: false,
