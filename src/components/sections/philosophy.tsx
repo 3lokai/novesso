@@ -72,15 +72,19 @@ const Philosophy = () => {
         <div ref={sectionRef}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           <Stack gap="lg" className="phi-text lg:col-span-12 xl:col-span-5">
-            <p className="label text-accent">Our Philosophy</p>
+            <p className="label text-accent">Our Conviction</p>
             <h2 className="h2 text-foreground">
-              The precision of mechanics, <br />
-              the warmth of soul.
+              European precision. <br />
+              Indian permanence.
             </h2>
             <p className="body text-muted-foreground">
-              Novesso represents the bridge between industrial perfection and artisanal emotion. 
-              Our systems are not merely functional dividers; they are the architectural anchors 
-              of the contemporary home.
+              Novesso closes the gap between the two. Our systems are not sold — they are calibrated.
+              Every sliding door, every wardrobe, every partition is engineered backwards from one
+              question: how should this feel to live with, ten years from now?
+            </p>
+            <p className="body text-muted-foreground">
+              We source hardware from foundries that have operated for three generations. We test
+              for India's humidity, its dust, its reality — and then we make it beautiful.
             </p>
             <p className="accent text-xl text-muted-foreground leading-relaxed">
               &quot;Every material selection is an intentional dialogue between light and structure.&quot;

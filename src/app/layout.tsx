@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Jost, EB_Garamond } from "next/font/google"
+import { Cormorant_Garamond, Montserrat, EB_Garamond } from "next/font/google"
 import type { Metadata, Viewport } from "next"
 
 import "./globals.css"
@@ -9,21 +9,22 @@ import { JsonLd } from "@/components/seo/json-ld"
 import { seoConfig, siteUrl } from "@/lib/seo"
 
 const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  variable: '--font-heading',
-  weight: ['300', '400', '500', '600', '700'],
-});
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["300", "400", "500"],
+})
 
-const jost = Jost({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  weight: ['200', '300', '400', '500', '600'],
-});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["200", "300", "400", "500", "600", "700"],
+})
 
 const ebGaramond = EB_Garamond({
-  subsets: ['latin'],
-  variable: '--font-accent',
-  weight: ['400', '500'],
+  subsets: ["latin"],
+  variable: "--font-accent",
+  weight: ["400"],
+  style: ["italic"],
 })
 
 export const metadata: Metadata = {
@@ -102,7 +103,7 @@ export default function RootLayout({
       className={cn(
         "antialiased",
         cormorant.variable,
-        jost.variable,
+        montserrat.variable,
         ebGaramond.variable
       )}
     >

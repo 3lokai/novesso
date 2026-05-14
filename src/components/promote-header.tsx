@@ -43,17 +43,21 @@ const RESOURCE_META: Record<
   (typeof SITE_CATALOG_ITEMS)[number]['href'],
   { desc: string; icon: React.ReactNode }
 > = {
-  '/wardrobes': {
+  '/catalog/wardrobe-systems': {
     desc: 'Built-in and walk-in wardrobe systems tailored to your space.',
     icon: <Dresser size={20} weight="light" aria-hidden />,
   },
-  '/sliding-systems': {
+  '/catalog/sliding-systems': {
     desc: 'Smooth sliding doors and panel hardware for modern interiors.',
     icon: <SlidersHorizontal size={20} weight="light" aria-hidden />,
   },
-  '/partitions': {
+  '/catalog/partition-walls': {
     desc: 'Room dividers and glass partitions for flexible layouts.',
     icon: <Columns size={20} weight="light" aria-hidden />,
+  },
+  '/catalog/pivot-systems': {
+    desc: 'Monumental entrance and internal pivot doors with hydraulic tech.',
+    icon: <SlidersHorizontal size={20} weight="light" aria-hidden />,
   },
 }
 

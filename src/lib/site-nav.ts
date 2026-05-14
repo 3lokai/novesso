@@ -4,9 +4,10 @@
 export const SITE_CATALOG_HREF = '/catalog' as const
 
 export const SITE_CATALOG_ITEMS = [
-  { href: '/wardrobes', label: 'WARDROBES' },
-  { href: '/sliding-systems', label: 'SLIDING SYSTEMS' },
-  { href: '/partitions', label: 'PARTITIONS' },
+  { href: '/catalog/wardrobe-systems', label: 'Wardrobe Systems' },
+  { href: '/catalog/sliding-systems', label: 'Sliding Systems' },
+  { href: '/catalog/partition-walls', label: 'Partition Walls' },
+  { href: '/catalog/pivot-systems', label: 'Pivot Systems' },
 ] as const
 
 export const SITE_PRIMARY_NAV = [

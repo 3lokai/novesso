@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { Container, Section, Stack } from '@/components/primitives'
 import { ConsultationModal } from '@/components/ui/consultation-modal'
+import Link from 'next/link'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)
@@ -52,13 +53,22 @@ const CTA = () => {
       <Container>
         <div ref={container}>
         <Stack gap="lg" className="relative z-10 max-w-2xl mx-auto cta-content items-center">
+          <p className="label text-accent text-[10px] tracking-[0.4em]">Begin the Conversation</p>
           <h2 className="h1 text-primary-foreground">
-            Start Your <br /> Project
+            Every project starts <br /> with a site audit.
           </h2>
           <p className="lead text-primary-foreground/60">
-            Invite us into your space. Our designers will work with you to create something truly exceptional.
+            Our engineers come to you — not the other way around. Tell us about your space and we will tell you what is possible.
           </p>
-          <ConsultationModal />
+          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+            <ConsultationModal />
+            <Link
+              href="/architect"
+              className="label text-[11px] tracking-[0.25em] text-primary-foreground/60 hover:text-primary-foreground border border-primary-foreground/20 hover:border-primary-foreground/50 px-6 py-3 transition-all duration-300"
+            >
+              PARTNER WITH US — ARCHITECTS
+            </Link>
+          </div>
         </Stack>
         </div>
       </Container>

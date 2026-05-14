@@ -15,7 +15,7 @@ const TEAM = [
     initials: 'AR',
     name: 'Ananya Rao',
     role: 'Founder & Creative Director',
-    location: 'Bangalore',
+    location: 'Bangalore — HQ & Creative',
     quote:
       'Space is not background. It is the primary act of design.',
   },
@@ -23,7 +23,7 @@ const TEAM = [
     initials: 'LM',
     name: 'Lorenzo Moretti',
     role: 'Director of Engineering',
-    location: 'Milan',
+    location: 'Milan — Engineering & Sourcing',
     quote:
       'The engineering and the aesthetic must be indistinguishable from each other.',
   },
@@ -31,7 +31,7 @@ const TEAM = [
     initials: 'PV',
     name: 'Priya Venkat',
     role: 'Head of Materials & Sourcing',
-    location: 'Bangalore',
+    location: 'Bangalore — Materials Lab',
     quote:
       'Every finish we approve has survived a decade of imagining how it will age.',
   },
@@ -39,7 +39,7 @@ const TEAM = [
     initials: 'JC',
     name: 'James Clarke',
     role: 'Studio Lead, London',
-    location: 'London',
+    location: 'London — Design & Architecture',
     quote:
       'British understatement, Italian precision. That is the tension we work inside.',
   },

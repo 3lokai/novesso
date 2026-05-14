@@ -13,9 +13,9 @@ if (typeof window !== 'undefined') {
 }
 
 const categories = [
-  { title: 'Wardrobe Systems', img: '/photos/pexels-artbovich-6585606.jpg', desc: 'Sartorial storage solutions.' },
-  { title: 'Sliding Systems', img: '/photos/pexels-olenkabohovyk-7005019.jpg', desc: 'Seamless motion, redefined.' },
-  { title: 'Partitions', img: '/photos/pexels-pranavsinh232-7638806.jpg', desc: 'Architectural space division.' }
+  { title: 'Wardrobe Systems', img: '/photos/pexels-artbovich-6585606.jpg', desc: 'Wardrobes that open in silence and close without effort. Built to India\'s humidity, sized to your architect\'s drawings.' },
+  { title: 'Sliding Systems', img: '/photos/pexels-olenkabohovyk-7005019.jpg', desc: 'Hardware that disappears into the wall. Motion that feels engineered, not assembled.' },
+  { title: 'Partitions', img: '/photos/pexels-pranavsinh232-7638806.jpg', desc: 'Glass and frame systems that divide space without diminishing it.' }
 ]
 
 const Systems = () => {
@@ -56,7 +56,7 @@ const Systems = () => {
           <Stack gap="md" className="max-w-xl text-left">
             <h2 className="h2">Our Systems</h2>
             <p className="lead text-[var(--offwhite)]/60">
-              A curated suite of technical solutions designed to coexist in harmony.
+              A curated suite of technical solutions — each engineered for Indian conditions, each worthy of any address in the world.
             </p>
           </Stack>
           <div className="flex items-center gap-6 group cursor-pointer">

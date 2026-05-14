@@ -76,7 +76,7 @@ export default function DesignPage() {
           <div className="flex flex-col justify-between border-r border-border bg-card/30 p-12">
             <Stack gap="xl">
               <span className="label text-accent">02 — SECONDARY / INTERFACE</span>
-              <p className="label text-[length:var(--text-h2)] leading-none text-foreground">
+              <p className="h3 uppercase leading-tight tracking-wide text-foreground">
                 MODERN
                 <br />
                 LIVING
@@ -84,7 +84,7 @@ export default function DesignPage() {
             </Stack>
 
             <Stack gap="md" className="border-t border-border pt-8">
-              <h3 className="font-sans text-lg font-medium">Jost</h3>
+              <h3 className="font-sans text-lg font-medium">Montserrat</h3>
               <p className="body text-muted-foreground">
                 Weights: ExtraLight 200 · Light 300 · Regular 400 · Medium 500 ·
                 SemiBold 600
@@ -103,7 +103,7 @@ export default function DesignPage() {
           <div className="flex flex-col justify-between p-12">
             <Stack gap="xl">
               <span className="label text-accent">03 — ACCENT / NARRATIVE</span>
-              <p className="accent text-[length:var(--text-h2)] font-normal leading-tight text-primary">
+              <p className="accent max-w-md leading-snug text-primary">
                 Every space tells a story of intention, craft, and beauty.
               </p>
             </Stack>

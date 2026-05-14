@@ -80,10 +80,11 @@ const AboutStory = () => {
                 of how people move through their homes.&quot;
               </p>
               <p className="body text-muted-foreground leading-relaxed">
-                From a single Bangalore showroom, we expanded into Milan and
-                London — not to chase scale, but because certain materials,
-                certain craftsmen, and certain ideas are only found when you
-                travel far enough to find them.
+                Milan gave us access to hardware foundries that have operated for
+                three generations. London sharpened our restraint — the ability
+                to say more with less. Bangalore grounds everything in Indian
+                permanence: the humidity, the dust, the reality of how our
+                clients actually live.
               </p>
             </Stack>
 

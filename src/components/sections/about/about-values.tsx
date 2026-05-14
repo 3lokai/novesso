@@ -31,6 +31,12 @@ const VALUES = [
     title: 'Invisible Craft',
     body: 'The best work disappears. You don\'t see a Novesso wardrobe system — you feel the ease of living with it. That invisibility is the craft.',
   },
+  {
+    n: '05',
+    title: 'Generational Partnerships',
+    body: 'We build for clients who think in decades, not seasons. Our hardware is engineered to outlast the homes it is installed in. Our relationships are designed to match.',
+    wide: true,
+  },
 ]
 
 const AboutValues = () => {
@@ -80,7 +86,7 @@ const AboutValues = () => {
                 What We Believe
               </p>
               <h2 className="h2 text-primary-foreground">
-                Four principles. No exceptions.
+                Five principles. No exceptions.
               </h2>
             </Stack>
             <p className="body max-w-xs text-primary-foreground/50 leading-relaxed text-sm">
@@ -96,7 +102,7 @@ const AboutValues = () => {
                 key={v.n}
                 className={[
                   'value-card group relative p-8 md:p-12 border-b border-primary-foreground/10 cursor-default transition-colors duration-500 hover:bg-white/[0.03]',
-                  i % 2 === 0 ? 'md:border-r md:border-primary-foreground/10' : '',
+                  v.wide ? 'md:col-span-2' : (i % 2 === 0 ? 'md:border-r md:border-primary-foreground/10' : ''),
                 ].join(' ')}
               >
                 {/* Number */}
@@ -107,10 +113,15 @@ const AboutValues = () => {
                 {/* Gold rule that expands on hover */}
                 <div className="my-6 h-[1px] w-8 bg-accent/30 group-hover:w-16 transition-all duration-500 ease-expo-out" />
 
-                <h3 className="h3 text-primary-foreground mb-4">{v.title}</h3>
-                <p className="body text-primary-foreground/50 leading-relaxed text-sm">
+                <div className={v.wide ? 'grid grid-cols-1 md:grid-cols-2 gap-8' : ''}>
+                  <h3 className="h3 text-primary-foreground mb-4">{v.title}</h3>
+                  {v.wide && <p className="body text-primary-foreground/50 leading-relaxed text-sm self-end">
+                    {v.body}
+                  </p>}
+                </div>
+                {!v.wide && <p className="body text-primary-foreground/50 leading-relaxed text-sm">
                   {v.body}
-                </p>
+                </p>}
               </div>
             ))}
           </div>

@@ -34,7 +34,7 @@ const Hero = () => {
     <Section
       size="full"
       variant="dark"
-      className="relative overflow-hidden !px-0 pt-20 !min-h-0 items-stretch"
+      className="relative overflow-hidden !px-0 !min-h-0 items-stretch"
       style={{
         background: `
           radial-gradient(
@@ -60,17 +60,13 @@ const Hero = () => {
               backgroundSize: '48px 48px',
             }}
           >
-            <div className="absolute top-10 right-10 text-white/50 text-[10px] tracking-[0.3em] uppercase vertical-text hidden lg:block" style={{ writingMode: 'vertical-rl' }}>
-              Architectural Systems
-            </div>
-
+        
             <Stack gap="md" className="max-w-2xl relative z-10 hero-content">
               <h1 className="h-hero text-white">
-                Creare Vita <br />
-                <span className="accent text-white">Moderna</span>
-              </h1>
+                Creare Vita Moderna
+                    </h1>
               <p className="accent text-xl text-white/80 leading-relaxed">
-                Every space tells a story of intention, craft, and beauty.
+                Not how a space looks. How it feels.
               </p>
             </Stack>
           </div>
@@ -100,20 +96,15 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="bg-[var(--navy-deep)] flex items-center p-8 md:p-16 justify-between text-white border-t border-white/5">
-              {[
-                { v: '340+', l: 'Spaces Created' },
-                { v: '15+', l: 'Years Heritage' },
-                { v: '12', l: 'Design Awards' }
-              ].map((stat, i) => (
-                <React.Fragment key={i}>
-                  <div className="text-center">
-                    <div className="h3 text-accent">{stat.v}</div>
-                    <div className="label text-white/40 mt-1">{stat.l}</div>
-                  </div>
-                  {i < 2 && <div className="h-12 w-[1px] bg-white/10" />}
-                </React.Fragment>
-              ))}
+          <div className="bg-[var(--navy-deep)] flex items-center p-8 md:p-16 justify-between text-white border-t border-white/5">
+              <div className="flex flex-col gap-1">
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <span className="lead text-white/90">Designed for Living.</span>
+                  <span className="lead text-[var(--gold)]">Built for India.</span>
+                  <span className="lead text-white/90">Made to Last.</span>
+                </div>
+              </div>
+              <div className="hidden md:block h-12 w-[1px] bg-white/10" />
             </div>
           </div>
         </SplitGrid>

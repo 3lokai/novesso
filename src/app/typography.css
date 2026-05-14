@@ -1,32 +1,44 @@
+/* typography.css — CORRECTED TO MATCH BRAND GUIDELINES */
+
 /* Maps to next/font variables on <html> (layout.tsx) + fluid type scale.
-   --font-accent is set by EB_Garamond (variable: '--font-accent'); do not alias it to --font-heading. */
+
+   BRAND GUIDELINE MAPPING:
+   - Display/Headings → Cormorant Garamond (Light 300, Regular 400, Medium 500)
+   - Body/Interface/Navigation → Montserrat (ExtraLight 200 → Bold 700)
+   - Accent/Editorial → EB Garamond Italic (kept for pull-quotes only)
+*/
+
 :root {
-  --font-display: var(--font-heading);
-  --font-body: var(--font-sans);
-  --text-hero: clamp(3rem, 6vw, 6rem);
-  --text-h1: clamp(2.5rem, 4vw, 4.5rem);
-  --text-h2: clamp(2rem, 3vw, 3.5rem);
-  --text-h3: 2.5rem;
-  --text-h4: 1.75rem;
-  --text-body: 0.875rem;
-  --text-lead: 1.25rem;
-  --text-label: 0.6875rem;
+  /* Font family references (set via next/font in layout.tsx) */
+  --font-display: var(--font-heading); /* Cormorant Garamond */
+  --font-body: var(--font-sans); /* Montserrat (NOT Jost) */
+
+  /* Fluid type scale — matches brand guidelines pg 9 */
+  --text-hero: clamp(4.5rem, 6vw, 6rem); /* 72-96px */
+  --text-h1: clamp(3.5rem, 4.5vw, 4.5rem); /* 56-72px */
+  --text-h2: clamp(2.5rem, 3.5vw, 3.5rem); /* 40-56px */
+  --text-h3: clamp(1.5rem, 2rem, 2rem); /* 24-32px — Montserrat SemiBold per guideline */
+  --text-h4: clamp(1.125rem, 1.375rem, 1.375rem); /* 18-22px — Montserrat Medium */
+  --text-body: 0.9375rem; /* 15px (14-16px range) — Montserrat Regular */
+  --text-lead: 1.125rem; /* 18px (16-18px range) — Montserrat Light */
+  --text-caption: 0.8125rem; /* 13px (12-13px range) */
+  --text-label: 0.6875rem; /* 11px (9-11px range) — all-caps + tracking */
 }
 
 @layer base {
-  /* === HEADINGS (Display Serif) === */
+  /* === DISPLAY HEADINGS (Cormorant Garamond per guidelines pg 8) === */
   .h-hero {
     font-family: var(--font-display);
     font-size: var(--text-hero);
-    font-weight: 300;
-    letter-spacing: -0.02em;
+    font-weight: 300; /* Light — campaign/landing hero */
+    letter-spacing: -0.02em; /* slightly negative at display sizes */
     line-height: 1.05;
   }
 
   .h1 {
     font-family: var(--font-display);
     font-size: var(--text-h1);
-    font-weight: 300;
+    font-weight: 300; /* Light — primary section titles */
     letter-spacing: -0.01em;
     line-height: 1.1;
   }
@@ -34,50 +46,87 @@
   .h2 {
     font-family: var(--font-display);
     font-size: var(--text-h2);
-    font-weight: 300;
+    font-weight: 400; /* Regular — sub-section headings */
     line-height: 1.2;
   }
 
+  /* === UI HEADINGS (Montserrat per guidelines pg 9) === */
   .h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-body); /* MONTSERRAT not Cormorant */
     font-size: var(--text-h3);
-    font-weight: 300;
+    font-weight: 600; /* SemiBold — UI section headers, card titles */
+    line-height: 1.3;
   }
 
   .h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-body); /* MONTSERRAT */
     font-size: var(--text-h4);
-    font-weight: 300;
+    font-weight: 500; /* Medium — component labels, sidebar headers */
+    line-height: 1.4;
   }
 
-  /* === BODY === */
+  /* === BODY TEXT (Montserrat per guidelines pg 8, 10) === */
   .body {
     font-family: var(--font-body);
     font-size: var(--text-body);
-    line-height: 1.6;
-    font-weight: 400;
+    font-weight: 400; /* Regular — standard body copy */
+    line-height: 1.85; /* 1.85-2.0 per guideline pg 10 */
+    letter-spacing: 0.02em; /* +0.02-0.04em per guideline */
   }
 
   .lead {
     font-family: var(--font-body);
     font-size: var(--text-lead);
-    line-height: 1.5;
-    font-weight: 400;
+    font-weight: 300; /* Light — lead paragraphs, editorial intros */
+    line-height: 1.6;
   }
 
-  /* === LABELS (UI NAV STYLE) === */
+  .caption {
+    font-family: var(--font-body);
+    font-size: var(--text-caption);
+    font-weight: 300; /* Light — image captions, footnotes */
+    line-height: 1.5;
+  }
+
+  /* === LABELS & NAVIGATION (Montserrat uppercase per guideline pg 10) === */
   .label {
     font-family: var(--font-body);
     font-size: var(--text-label);
+    font-weight: 400; /* Regular for micro labels */
     text-transform: uppercase;
-    letter-spacing: 0.35em;
-    font-weight: 300;
+    letter-spacing: 0.25em; /* 0.20-0.35em per guideline */
   }
 
-  /* === ACCENT (ITALIC EDITORIAL) === */
+  .label-nav {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 300; /* Light for primary nav — weights 300-500 only */
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+
+  .label-cta {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: 500; /* Medium for CTAs */
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+  }
+
+  /* === ACCENT (EB Garamond Italic — testimonials/pull-quotes ONLY per guideline pg 10) === */
   .accent {
     font-family: var(--font-accent);
     font-style: italic;
     font-weight: 400;
+    font-size: 1.25rem; /* 20-28px editorial per guideline */
+    line-height: 1.5;
+  }
+
+  .accent-small {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem; /* 14-18px caption context */
+    line-height: 1.6;
   }
 }
