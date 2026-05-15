@@ -23,7 +23,7 @@ const LOCAL_SHOWROOMS = [
 
 const LocalShowrooms = () => {
   return (
-    <Section className="bg-white">
+    <Section id="showrooms" className="bg-white">
       <Container>
         <Stack gap="xl">
           <div className="max-w-2xl">
@@ -34,7 +34,7 @@ const LocalShowrooms = () => {
             </p>
           </div>
 
-          <Grid cols={1} md={2} gap="lg">
+          <Grid cols={1} gap="md">
             {LOCAL_SHOWROOMS.map((showroom) => (
               <div key={showroom.city} className="group relative overflow-hidden border border-border/50">
                 <div className="relative h-[300px] w-full overflow-hidden">

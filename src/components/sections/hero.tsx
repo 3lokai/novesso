@@ -3,8 +3,11 @@
 import * as React from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import Link from 'next/link'
 import { ArrowRight } from '@phosphor-icons/react'
 import { Section, SplitGrid, Stack } from '@/components/primitives'
+import { Button } from '@/components/ui/button'
+import { ConsultationModal } from '@/components/ui/consultation-modal'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(useGSAP)
@@ -61,13 +64,30 @@ const Hero = () => {
             }}
           >
         
-            <Stack gap="md" className="max-w-2xl relative z-10 hero-content">
-              <h1 className="h-hero text-white">
-                Creare Vita Moderna
-                    </h1>
-              <p className="accent text-xl text-white/80 leading-relaxed">
-                Not how a space looks. How it feels.
-              </p>
+            <Stack gap="lg" className="max-w-2xl relative z-10 hero-content">
+              <Stack gap="md">
+                <h1 className="h-hero text-white">
+                  Creare Vita Moderna
+                </h1>
+                <p className="accent text-xl text-white/80 leading-relaxed">
+                  Not how a space looks. How it feels.
+                </p>
+              </Stack>
+
+              <div className="flex flex-wrap gap-4 pt-4">
+                <ConsultationModal
+                  trigger={
+                    <Button variant="primary" size="lg" className="min-w-[200px]">
+                      Schedule Consultation
+                    </Button>
+                  }
+                />
+                <Button variant="secondary" size="lg" asChild className="min-w-[200px] border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-white">
+                  <Link href="/contact#showrooms">
+                    Visit Showrooms
+                  </Link>
+                </Button>
+              </div>
             </Stack>
           </div>
 
