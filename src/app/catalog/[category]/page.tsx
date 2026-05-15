@@ -4,7 +4,17 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container, Grid, Section, Stack } from '@/components/primitives'
-import { getCategoryBySlug, getProductsByCategory, categories } from '@/lib/catalog-data'
+import { PageJsonLd } from '@/components/seo/json-ld'
+import {
+  getCategoryBySlug,
+  getProductsByCategory,
+  categories,
+} from '@/lib/catalog-data'
+import {
+  buildBreadcrumbJsonLd,
+  buildItemListJsonLd,
+  seoConfig,
+} from '@/lib/seo'
 import { Metadata } from 'next'
 
 type Params = Promise<{ category: string }>
@@ -15,27 +25,72 @@ export function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params
+}): Promise<Metadata> {
   const { category: categorySlug } = await params
   const category = getCategoryBySlug(categorySlug)
 
   if (!category) return {}
 
+  const title = category.name
+  const description = category.description
+  const canonical = `/catalog/${category.slug}`
+
   return {
-    title: `${category.name} — Catalog`,
-    description: category.description,
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      type: 'website',
+      locale: seoConfig.locale,
+      url: canonical,
+      title,
+      description,
+      siteName: seoConfig.siteName,
+      images: [
+        {
+          url: category.image,
+          width: 1200,
+          height: 630,
+          alt: category.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [category.image],
+    },
   }
 }
 
 export default async function CategoryPage({ params }: { params: Params }) {
   const { category: categorySlug } = await params
   const category = getCategoryBySlug(categorySlug)
-  const products = getProductsByCategory(categorySlug)
+  const categoryProducts = getProductsByCategory(categorySlug)
 
   if (!category) notFound()
 
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: category.name, path: `/catalog/${category.slug}` },
+  ])
+
   return (
     <div className="bg-background">
+      <PageJsonLd
+        items={[
+          breadcrumbJsonLd,
+          buildItemListJsonLd(category, categoryProducts),
+        ]}
+      />
+
       {/* Category Hero */}
       <Section size="default" variant="default">
         <Container>
@@ -51,9 +106,9 @@ export default async function CategoryPage({ params }: { params: Params }) {
       <Section size="lg" variant="muted">
         <Container>
           <Grid cols={2} gap="lg">
-            {products.map((product) => (
-              <Link 
-                key={product.id} 
+            {categoryProducts.map((product) => (
+              <Link
+                key={product.id}
                 href={`/catalog/${categorySlug}/${product.slug}`}
                 className="group"
               >

@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 
 import Hero from '@/components/sections/hero'
 import Philosophy from '@/components/sections/philosophy'
-import AudienceSplit from '@/components/sections/audience-split'
 import Systems from '@/components/sections/systems'
 import Process from '@/components/sections/process'
 import Projects from '@/components/sections/projects'
@@ -13,11 +12,36 @@ import CTA from '@/components/sections/cta'
 import { Footer } from '@/components/sections/footer'
 import { seoConfig } from '@/lib/seo'
 
+const title = "Luxury Interior Design Systems"
+const description = seoConfig.defaultDescription
+
 export const metadata: Metadata = {
-  title: "Luxury Interior Design Systems",
-  description: seoConfig.defaultDescription,
+  title,
+  description,
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: seoConfig.locale,
+    url: "/",
+    title,
+    description,
+    siteName: seoConfig.siteName,
+    images: [
+      {
+        url: seoConfig.ogImagePath,
+        width: 1200,
+        height: 630,
+        alt: `${seoConfig.siteName} — ${seoConfig.tagline}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [seoConfig.ogImagePath],
   },
 }
 
@@ -26,7 +50,6 @@ export default function Page() {
     <div className="bg-background">
       <Hero />
       <Philosophy />
-      <AudienceSplit />
       <Systems />
       <Process />
       <Projects />
