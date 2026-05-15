@@ -4,7 +4,7 @@ import * as React from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { Container, Section, Stack } from '@/components/primitives'
+import { Container, Section } from '@/components/primitives'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger, useGSAP)

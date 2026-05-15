@@ -30,7 +30,9 @@ function Field({
 }) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      <Label htmlFor={htmlFor}>{label}</Label>
+      <Label htmlFor={htmlFor} className="label text-foreground/50">
+        {label}
+      </Label>
       {children}
     </div>
   )
@@ -99,6 +101,7 @@ export function ConsultationModal({ trigger }: ConsultationModalProps) {
                 type="text"
                 placeholder="Your full name"
                 autoComplete="name"
+                className="border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors"
                 required
               />
             </Field>
@@ -110,6 +113,7 @@ export function ConsultationModal({ trigger }: ConsultationModalProps) {
                 type="tel"
                 placeholder="+91 98765 43210"
                 autoComplete="tel"
+                className="border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors"
               />
             </Field>
           </div>
@@ -122,6 +126,7 @@ export function ConsultationModal({ trigger }: ConsultationModalProps) {
               type="email"
               placeholder="you@example.com"
               autoComplete="email"
+              className="border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors"
               required
             />
           </Field>
@@ -133,6 +138,7 @@ export function ConsultationModal({ trigger }: ConsultationModalProps) {
               name="query"
               rows={4}
               placeholder="Describe your space, vision, or any specific requirements…"
+              className="border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors resize-none"
             />
           </Field>
 
@@ -160,7 +166,7 @@ export function ConsultationModal({ trigger }: ConsultationModalProps) {
           {/* ── Footer Row ─────────────────────────────────────────────────── */}
           <div className="flex flex-col-reverse gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
             {/* Privacy note */}
-            <p className="text-xs text-muted-foreground leading-relaxed max-w-xs">
+            <p className="caption text-muted-foreground max-w-xs">
               Your information is treated with the utmost discretion and will
               never be shared with third parties.
             </p>

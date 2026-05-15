@@ -118,10 +118,7 @@ const AboutHero = () => {
         {/* Headline */}
         <Stack gap="md" className="about-hero-title max-w-4xl">
           <h1 className="h-hero text-white leading-none">
-            Where Structure
-          </h1>
-          <h1 className="h-hero text-white leading-none">
-            <span className="accent text-white">Meets Soul.</span>
+            Where Structure meets Soul.
           </h1>
         </Stack>
 

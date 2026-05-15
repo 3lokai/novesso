@@ -74,8 +74,7 @@ const Hero = () => {
           <div className="bg-background flex flex-col pt-12 md:pt-0 hero-right">
             <div className="flex-1 p-8 md:p-20 flex flex-col justify-center border-b border-border">
               <div className="hero-philosophy">
-                <span className="accent text-accent text-xl mb-4 block">Philosophy</span>
-                <h2 className="h2 mb-12 text-foreground">
+              <h2 className="h2 mb-12 text-foreground">
                   Where structural precision meets human emotion.
                 </h2>
 

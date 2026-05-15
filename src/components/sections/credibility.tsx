@@ -1,4 +1,4 @@
-import { Container, Grid, Section, Stack } from '@/components/primitives'
+import { Container, Section, Stack } from '@/components/primitives'
 
 const Credibility = () => {
   const stats = [

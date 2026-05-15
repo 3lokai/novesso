@@ -1,6 +1,4 @@
 import type { Metadata } from 'next'
-
-import { seoConfig } from '@/lib/seo'
 import AboutHero from '@/components/sections/about/about-hero'
 import AboutStory from '@/components/sections/about/about-story'
 import AboutTimeline from '@/components/sections/about/about-timeline'
