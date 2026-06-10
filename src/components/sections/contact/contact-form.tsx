@@ -42,7 +42,7 @@ const fieldClass =
   'border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors aria-invalid:border-destructive'
 
 const ContactForm = () => {
-  const { status, errors, handleSubmit, reset } = useEnquiryForm()
+  const { status, errors, formError, handleSubmit, reset } = useEnquiryForm('Contact page')
 
   return (
     <Section id="consultation-form" variant="muted">
@@ -168,7 +168,9 @@ const ContactForm = () => {
                         <span className="text-muted-foreground">Sending your request…</span>
                       )}
                       {status === 'error' && (
-                        <span className="text-destructive">Please correct the highlighted fields.</span>
+                        <span className="text-destructive">
+                          {formError ?? 'Please correct the highlighted fields.'}
+                        </span>
                       )}
                     </p>
                   </div>

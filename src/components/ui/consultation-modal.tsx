@@ -59,7 +59,7 @@ interface ConsultationModalProps {
 // ─── Modal ────────────────────────────────────────────────────────────────────
 export function ConsultationModal({ trigger }: ConsultationModalProps) {
   const [open, setOpen] = React.useState(false)
-  const { status, errors, handleSubmit, reset } = useEnquiryForm()
+  const { status, errors, formError, handleSubmit, reset } = useEnquiryForm('Consultation modal')
 
   // Reset the form state a touch after close so the success panel doesn't flash
   // away mid-animation when the user dismisses the dialog.
@@ -210,7 +210,9 @@ export function ConsultationModal({ trigger }: ConsultationModalProps) {
                     <span className="text-muted-foreground">Sending your enquiry…</span>
                   )}
                   {status === "error" && (
-                    <span className="text-destructive">Please correct the highlighted fields.</span>
+                    <span className="text-destructive">
+                      {formError ?? "Please correct the highlighted fields."}
+                    </span>
                   )}
                 </p>
               </div>

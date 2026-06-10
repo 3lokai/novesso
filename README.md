@@ -28,6 +28,11 @@ Copy `.env.example` to `.env.local` and set:
 
 - `NEXT_PUBLIC_SITE_URL` — canonical site origin (used for metadata, sitemap, and robots)
 - `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — required for the footer map embed
+- `RESEND_API_KEY` — Resend API key for sending enquiry emails (contact form + consultation modal)
+- `ENQUIRY_TO_EMAIL` — inbox that receives enquiries
+- `ENQUIRY_FROM_EMAIL` — verified Resend sender, format `Novesso <enquiries@novesso.com>`
+
+Enquiries are sent server-side via the `sendEnquiry` server action (`src/lib/actions/send-enquiry.ts`). Without the three `RESEND_*`/`ENQUIRY_*` vars set, the forms validate and show a graceful "temporarily unavailable" message instead of sending.
 
 ## Scripts
 
