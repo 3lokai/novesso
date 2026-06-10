@@ -2,6 +2,9 @@ import type { Metadata } from "next"
 
 import Hero from '@/components/sections/hero'
 import Philosophy from '@/components/sections/philosophy'
+import PhilosophyGrid from '@/components/sections/philosophy-grid'
+import PhilosophyDiagonal from '@/components/sections/philosophy-diagonal'
+import PhilosophyShapes from '@/components/sections/philosophy-shapes'
 import Systems from '@/components/sections/systems'
 import Process from '@/components/sections/process'
 import Projects from '@/components/sections/projects'
@@ -50,6 +53,9 @@ export default function Page() {
     <div className="bg-background">
       <Hero />
       <Philosophy />
+      <PhilosophyGrid />
+      <PhilosophyDiagonal />
+      <PhilosophyShapes />
       <Systems />
       <Process />
       <Projects />
