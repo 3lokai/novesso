@@ -21,22 +21,28 @@ const CTA = () => {
     const targets = container.current.querySelectorAll('.cta-content > *')
     if (targets.length === 0) return
 
-    gsap.fromTo(
-      targets,
-      { autoAlpha: 0, scale: 0.95 },
-      {
-        autoAlpha: 1,
-        scale: 1,
-        stagger: 0.2,
-        duration: 1.2,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: container.current,
-          start: 'top 70%',
-          once: true,
-        },
-      }
-    )
+    // Content is visible by default; reveal only runs when motion is welcome, so
+    // the CTA never depends on a tween (or a scroll that may never happen) to appear.
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo(
+        targets,
+        { autoAlpha: 0, scale: 0.95 },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          stagger: 0.2,
+          duration: 1.2,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: container.current,
+            start: 'top 70%',
+            once: true,
+          },
+        }
+      )
+    })
+    return () => mm.revert()
   }, { scope: container })
 
   return (

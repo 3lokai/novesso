@@ -51,38 +51,42 @@ const AboutTimeline = () => {
     const root = container.current
     if (!root) return
 
-    gsap.from('.timeline-header > *', {
-      scrollTrigger: { trigger: root, start: 'top 80%' },
-      y: 30,
-      opacity: 0,
-      stagger: 0.12,
-      duration: 1,
-      ease: 'power2.out',
-    })
-
-    // Animate the gold connecting line
-    if (lineRef.current) {
-      gsap.fromTo(lineRef.current,
-        { scaleX: 0, transformOrigin: 'left center' },
-        {
-          scaleX: 1,
-          duration: 1.5,
-          ease: 'expo.out',
-          scrollTrigger: { trigger: root, start: 'top 70%' },
-        }
-      )
-    }
-
-    gsap.utils.toArray<HTMLElement>('.milestone-card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: { trigger: root, start: 'top 65%' },
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.timeline-header > *', {
+        scrollTrigger: { trigger: root, start: 'top 80%' },
         y: 30,
         opacity: 0,
-        duration: 0.8,
-        delay: i * 0.12,
+        stagger: 0.12,
+        duration: 1,
         ease: 'power2.out',
       })
+
+      // Animate the gold connecting line
+      if (lineRef.current) {
+        gsap.fromTo(lineRef.current,
+          { scaleX: 0, transformOrigin: 'left center' },
+          {
+            scaleX: 1,
+            duration: 1.5,
+            ease: 'expo.out',
+            scrollTrigger: { trigger: root, start: 'top 70%' },
+          }
+        )
+      }
+
+      gsap.utils.toArray<HTMLElement>('.milestone-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: root, start: 'top 65%' },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          delay: i * 0.12,
+          ease: 'power2.out',
+        })
+      })
     })
+    return () => mm.revert()
   }, { scope: container })
 
   return (

@@ -19,39 +19,44 @@ const AboutStory = () => {
       const root = sectionRef.current
       if (!root) return
 
-      // Text columns
-      gsap.from('.story-text > *', {
-        scrollTrigger: { trigger: root, start: 'top 80%' },
-        y: 30,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 1,
-        ease: 'power2.out',
-      })
+      // Content is visible by default; reveals + parallax only run when motion is welcome.
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // Text columns
+        gsap.from('.story-text > *', {
+          scrollTrigger: { trigger: root, start: 'top 80%' },
+          y: 30,
+          opacity: 0,
+          stagger: 0.15,
+          duration: 1,
+          ease: 'power2.out',
+        })
 
-      // Image reveal — wipe up
-      gsap.from('.story-image-wrap', {
-        scrollTrigger: { trigger: root, start: 'top 70%' },
-        clipPath: 'inset(100% 0 0 0)',
-        duration: 1.4,
-        ease: 'expo.out',
-      })
+        // Image reveal — wipe up
+        gsap.from('.story-image-wrap', {
+          scrollTrigger: { trigger: root, start: 'top 70%' },
+          clipPath: 'inset(100% 0 0 0)',
+          duration: 1.4,
+          ease: 'expo.out',
+        })
 
-      // Subtle parallax on the inner image
-      gsap.fromTo(
-        '.story-image-inner',
-        { y: -40 },
-        {
-          y: 40,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: root,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
+        // Subtle parallax on the inner image
+        gsap.fromTo(
+          '.story-image-inner',
+          { y: -40 },
+          {
+            y: 40,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: root,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1,
+            },
           },
-        },
-      )
+        )
+      })
+      return () => mm.revert()
     },
     { scope: sectionRef },
   )

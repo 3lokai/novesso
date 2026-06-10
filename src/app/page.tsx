@@ -7,6 +7,7 @@ import PhilosophyDiagonal from '@/components/sections/philosophy-diagonal'
 import PhilosophyShapes from '@/components/sections/philosophy-shapes'
 import Systems from '@/components/sections/systems'
 import Process from '@/components/sections/process'
+import MarqueeBand from '@/components/sections/marquee-band'
 import Projects from '@/components/sections/projects'
 import IndiaAdvantage from '@/components/sections/india-advantage'
 import Testimonials from '@/components/sections/testimonials'
@@ -58,6 +59,7 @@ export default function Page() {
       <PhilosophyShapes />
       <Systems />
       <Process />
+      <MarqueeBand />
       <Projects />
       <IndiaAdvantage />
       <Testimonials />

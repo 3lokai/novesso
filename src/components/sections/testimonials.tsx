@@ -37,32 +37,41 @@ const QUOTES = [
 const Testimonials = () => {
   const container = React.useRef<HTMLDivElement>(null)
   const [active, setActive] = React.useState(0)
+  const [paused, setPaused] = React.useState(false)
 
   useGSAP(() => {
-    gsap.from('.testimonials-header > *', {
-      scrollTrigger: { trigger: container.current, start: 'top 80%' },
-      y: 30,
-      opacity: 0,
-      stagger: 0.12,
-      duration: 1,
-      ease: 'power2.out',
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.testimonials-header > *', {
+        scrollTrigger: { trigger: container.current, start: 'top 80%' },
+        y: 30,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 1,
+        ease: 'power2.out',
+      })
+      gsap.from('.testimonial-quote', {
+        scrollTrigger: { trigger: container.current, start: 'top 70%' },
+        y: 20,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'expo.out',
+      })
     })
-    gsap.from('.testimonial-quote', {
-      scrollTrigger: { trigger: container.current, start: 'top 70%' },
-      y: 20,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'expo.out',
-    })
+    return () => mm.revert()
   }, { scope: container })
 
-  // Auto-cycle quotes
+  // Auto-cycle quotes — paused on hover/focus, and disabled entirely under
+  // reduced-motion so the content never changes under a reader who didn't ask.
   React.useEffect(() => {
+    if (paused) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % QUOTES.length)
-    }, 6000)
+    }, 9000)
     return () => clearInterval(interval)
-  }, [])
+  }, [paused])
 
   const q = QUOTES[active]
 
@@ -73,7 +82,13 @@ const Testimonials = () => {
       variant="dark"
       className="bg-[var(--navy-deep)] text-primary-foreground overflow-hidden"
     >
-      <div ref={container}>
+      <div
+        ref={container}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocusCapture={() => setPaused(true)}
+        onBlurCapture={() => setPaused(false)}
+      >
         <Container>
           {/* Header */}
           <div className="testimonials-header mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -98,7 +113,11 @@ const Testimonials = () => {
           </div>
 
           {/* Quote */}
-          <div className="testimonial-quote border-t border-white/10 pt-12">
+          <div
+            className="testimonial-quote border-t border-white/10 pt-12"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
                 <p className="accent text-2xl md:text-3xl text-primary-foreground/90 leading-relaxed mb-10">

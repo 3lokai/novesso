@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-10T00:00:00Z",
+  "title": "Design System: Novesso",
+  "extensions": {
+    "colorMeta": {
+      "navy-deep": { "role": "primary", "displayName": "Midnight Navy", "canonical": "#0f1b4c", "tonalRamp": ["#05091f", "#080e22", "#0f1b4c", "#1a2b6b", "#4a5a8f", "#7a8bbd", "#aab6d8", "#dde3f0"] },
+      "gold": { "role": "secondary", "displayName": "Antique Gold", "canonical": "#c9a96e", "tonalRamp": ["#4a3c1f", "#6e5a2f", "#937a45", "#b8945a", "#c9a96e", "#dcc290", "#e8d5a3", "#f3ebd2"] },
+      "cream": { "role": "neutral", "displayName": "Cream", "canonical": "#ede9e0", "tonalRamp": ["#2b2922", "#4d4a40", "#706c5f", "#9a9588", "#c4bfb2", "#ede9e0", "#f4f1ea", "#faf9f5"] },
+      "offwhite": { "role": "neutral", "displayName": "Off-White", "canonical": "#f8f7f4", "tonalRamp": ["#2b2a27", "#4f4e4a", "#74726d", "#9c9a94", "#c6c4bd", "#e4e2dc", "#f8f7f4", "#fdfdfb"] }
+    },
+    "typographyMeta": {
+      "hero": { "displayName": "Hero", "purpose": "Landing/campaign hero only — Cormorant Garamond Light, max 96px." },
+      "h1": { "displayName": "H1", "purpose": "Primary section titles — Cormorant Garamond Light." },
+      "h2": { "displayName": "H2", "purpose": "Sub-section headings — Cormorant Garamond Regular." },
+      "h3": { "displayName": "H3", "purpose": "UI section headers and card titles — Montserrat SemiBold (the serif-to-sans switch)." },
+      "body": { "displayName": "Body", "purpose": "Standard copy — Montserrat Regular, open 1.85 leading, 65–75ch measure." },
+      "lead": { "displayName": "Lead", "purpose": "Editorial intros — Montserrat Light." },
+      "label": { "displayName": "Label", "purpose": "Micro-labels and nav — Montserrat uppercase, ≥0.2em tracking." },
+      "accent": { "displayName": "Accent", "purpose": "Pull-quotes and testimonials ONLY — EB Garamond Italic." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "transition-all", "value": "all 0.2s ease", "purpose": "Default state transition on buttons and interactive controls." },
+      { "name": "press", "value": "translateY(1px)", "purpose": "Active-press feedback on buttons — replaces shadow depth." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action — navy ground, uppercase, sharp corners.",
+      "html": "<button class=\"ds-btn-primary\">Book a consultation</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 24px; background: #0f1b4c; color: #f8f7f4; border: 1px solid transparent; border-radius: 0; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer; transition: background 0.2s, transform 0.1s; } .ds-btn-primary:hover { background: rgba(15,27,76,0.9); } .ds-btn-primary:focus-visible { outline: none; border-color: #1a2b6b; box-shadow: 0 0 0 2px rgba(26,43,107,0.3); } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Supporting action — cream ground, navy ink.",
+      "html": "<button class=\"ds-btn-secondary\">Visit a showroom</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 24px; background: #ede9e0; color: #080e22; border: 1px solid transparent; border-radius: 0; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer; transition: background 0.2s, transform 0.1s; } .ds-btn-secondary:hover { background: rgba(237,233,224,0.8); } .ds-btn-secondary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Lowest-emphasis action — no fill until hover.",
+      "html": "<button class=\"ds-btn-ghost\">Explore the catalog</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 24px; background: transparent; color: #080e22; border: 1px solid transparent; border-radius: 0; font-family: Montserrat, system-ui, sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer; transition: background 0.2s; } .ds-btn-ghost:hover { background: #ede9e0; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "Flat cream surface, sharp corners, 32px padding, no shadow.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-title\">Sliding Systems</div><p class=\"ds-card-body\">Architectural partitions and sliding doors engineered for contemporary Indian homes.</p></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 12px; padding: 32px; background: #ede9e0; color: #080e22; border-radius: 0; overflow: hidden; } .ds-card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 300; letter-spacing: -0.01em; } .ds-card-body { font-family: Montserrat, system-ui, sans-serif; font-size: 15px; line-height: 1.85; letter-spacing: 0.02em; color: rgba(8,14,34,0.7); margin: 0; }"
+    },
+    {
+      "name": "Underline Input",
+      "kind": "input",
+      "refersTo": "input-underline",
+      "description": "Draughting-line field — transparent, 1px bottom border only, no box.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" />",
+      "css": ".ds-input { width: 100%; height: 48px; padding: 8px 0; background: transparent; color: #080e22; border: none; border-bottom: 1px solid rgba(8,14,34,0.14); border-radius: 0; font-family: Montserrat, system-ui, sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; } .ds-input::placeholder { color: rgba(8,14,34,0.45); } .ds-input:focus { border-bottom-color: #0f1b4c; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Uppercase Montserrat Light, wide 0.3em tracking, gold underline on hover.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Collections</a>",
+      "css": ".ds-nav-link { position: relative; font-family: Montserrat, system-ui, sans-serif; font-size: 11px; font-weight: 300; text-transform: uppercase; letter-spacing: 0.3em; color: #080e22; text-decoration: none; padding-bottom: 4px; } .ds-nav-link::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: #c9a96e; transition: width 0.25s ease; } .ds-nav-link:hover::after { width: 100%; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Italian Editorial",
+    "overview": "Novesso reads like a printed design monograph rendered for the screen. Cormorant Garamond carries the display voice — light-weight, large, with a confident negative tracking — while Montserrat does the architectural work of labels, body, and navigation in disciplined uppercase. The page is a magazine spread: generous voids, a deep Midnight Navy ground, Antique Gold used the way a printer would spot-varnish a single mark. This system is confident, modern, and understated. Restraint is the flex: hierarchy and space, not ornament, signal luxury. Gold is punctuation — it marks the one thing that matters in a view and never washes a surface.",
+    "keyCharacteristics": [
+      "Zero-radius everything; corners are sharp by doctrine.",
+      "Flat surfaces — depth comes from tonal navy/cream layering, never shadow.",
+      "Serif display (Cormorant) against uppercase-tracked sans (Montserrat).",
+      "Gold as a ≤10% accent; navy + cream do all the structural work.",
+      "Architectural spacing: generous, varied, never a uniform card grid."
+    ],
+    "rules": [
+      { "name": "The Gold-as-Punctuation Rule", "body": "Antique Gold appears on ≤10% of any view — one rule, one mark, one emphasized word. The moment gold fills a surface or repeats across a grid, it has failed.", "section": "colors" },
+      { "name": "The Flat-Ground Rule", "body": "Depth is built from navy/cream tonal layering and image overlays, never from drop shadows. If a surface needs to lift, darken or lighten the ground, don't float it.", "section": "colors" },
+      { "name": "The Serif-Voice / Sans-Structure Rule", "body": "Cormorant speaks (hero, H1, H2, large card titles); Montserrat structures (H3 down, all labels, nav, body). Never set body in Cormorant; never set a hero in Montserrat.", "section": "typography" },
+      { "name": "The Caps-Tracking Rule", "body": "Uppercase Montserrat always carries ≥0.2em tracking. Tight caps are forbidden.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Drop shadows are forbidden as a depth device. Replace any card shadow with a tonal ground change or a 1px border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every corner sharp — rounded-none / 0px on buttons, cards, inputs, modals.",
+      "Do restrict Antique Gold to ≤10% of any view.",
+      "Do convey depth with tonal navy/cream layering and image overlays, never shadow.",
+      "Do set display type in Cormorant and all functional/UI type in Montserrat caps.",
+      "Do keep uppercase Montserrat at ≥0.2em tracking and body measure at 65–75ch.",
+      "Do verify navy/cream and muted-text pairings hit WCAG 2.1 AA (≥4.5:1 body).",
+      "Do give every GSAP/scroll interaction a prefers-reduced-motion fallback."
+    ],
+    "donts": [
+      "Don't look mass-market / IKEA-flatpack.",
+      "Don't ship a generic SaaS landing: no gradient hero, no repeated feature-card grid, no eyebrow above every section, no 01/02/03 markers by reflex.",
+      "Don't do loud gold-everything luxury — gold is a mark, never a wash.",
+      "Don't go cold-corporate / sterile.",
+      "Don't add drop shadows for depth, use border-radius on any control, or nest cards.",
+      "Don't set body copy in Cormorant or a hero in Montserrat.",
+      "Don't use gradient text or decorative glassmorphism."
+    ]
+  }
+}

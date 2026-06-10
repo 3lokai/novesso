@@ -47,25 +47,29 @@ const AboutValues = () => {
       const root = container.current
       if (!root) return
 
-      gsap.from('.values-header > *', {
-        scrollTrigger: { trigger: root, start: 'top 80%' },
-        y: 30,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 1,
-        ease: 'power2.out',
-      })
-
-      gsap.utils.toArray<HTMLElement>('.value-card').forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: { trigger: card, start: 'top 88%' },
-          y: 40,
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.values-header > *', {
+          scrollTrigger: { trigger: root, start: 'top 80%' },
+          y: 30,
           opacity: 0,
+          stagger: 0.15,
           duration: 1,
-          delay: i * 0.05,
-          ease: 'power3.out',
+          ease: 'power2.out',
+        })
+
+        gsap.utils.toArray<HTMLElement>('.value-card').forEach((card, i) => {
+          gsap.from(card, {
+            scrollTrigger: { trigger: card, start: 'top 88%' },
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            delay: i * 0.05,
+            ease: 'power3.out',
+          })
         })
       })
+      return () => mm.revert()
     },
     { scope: container },
   )

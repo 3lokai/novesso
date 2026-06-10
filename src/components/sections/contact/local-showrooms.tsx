@@ -23,13 +23,13 @@ const LOCAL_SHOWROOMS = [
 
 const LocalShowrooms = () => {
   return (
-    <Section id="showrooms" className="bg-white">
+    <Section id="showrooms" variant="default">
       <Container>
         <Stack gap="xl">
           <div className="max-w-2xl">
             <p className="label text-accent text-[11px] tracking-[0.4em] uppercase mb-4">India Presence</p>
-            <h2 className="h2 text-[var(--navy-dark)]">Local Showrooms</h2>
-            <p className="body text-[var(--navy-dark)]/60 mt-4">
+            <h2 className="h2 text-foreground">Local Showrooms</h2>
+            <p className="body text-muted-foreground mt-4">
               Visit our state-of-the-art experience centres to see our systems in action and consult with our on-site engineers.
             </p>
           </div>
@@ -50,15 +50,15 @@ const LocalShowrooms = () => {
                     <h3 className="h4 text-white">{showroom.name}</h3>
                   </div>
                 </div>
-                <div className="p-8 bg-white">
+                <div className="p-8 bg-card">
                   <Stack gap="md">
-                    <p className="body text-[var(--navy-dark)]/60 text-sm whitespace-pre-line leading-relaxed">
+                    <p className="body text-muted-foreground text-sm whitespace-pre-line leading-relaxed">
                       {showroom.address}
                     </p>
                     <div className="pt-4 border-t border-border/50">
-                      <a 
-                        href={`tel:${showroom.phone.replace(/\s/g, '')}`} 
-                        className="label text-[11px] text-[var(--navy-dark)] hover:text-accent transition-colors"
+                      <a
+                        href={`tel:${showroom.phone.replace(/\s/g, '')}`}
+                        className="label text-[11px] text-foreground hover:text-accent transition-colors"
                       >
                         Book an Appointment — {showroom.phone}
                       </a>

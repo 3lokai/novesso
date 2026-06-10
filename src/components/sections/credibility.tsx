@@ -10,7 +10,7 @@ const Credibility = () => {
   ]
 
   return (
-    <Section size="lg" variant="default" className="bg-background border-y border-border">
+    <Section size="sm" variant="default" className="bg-background border-y border-border">
       <Container>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4">
           {stats.map((stat, idx) => (

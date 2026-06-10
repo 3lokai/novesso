@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container, Section, Stack } from '@/components/primitives'
+import { Button } from '@/components/ui/button'
+import { ConsultationModal } from '@/components/ui/consultation-modal'
 import { PageJsonLd } from '@/components/seo/json-ld'
 import {
   getCategoryBySlug,
@@ -168,13 +170,19 @@ export default async function ProductPage({ params }: { params: Params }) {
                 </div>
               )}
 
-              <div className="pt-4">
-                <Link
-                  href="/contact"
-                  className="inline-block px-8 py-3 bg-primary text-primary-foreground label-cta hover:bg-accent hover:text-accent-foreground transition-colors"
-                >
-                  Request Consultation
-                </Link>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <ConsultationModal
+                  trigger={
+                    <Button variant="primary" size="lg">
+                      Request Consultation
+                    </Button>
+                  }
+                />
+                <Button variant="ghost" size="lg" asChild>
+                  <Link href={`/catalog/${category.slug}`}>
+                    All {category.name}
+                  </Link>
+                </Button>
               </div>
             </Stack>
           </div>

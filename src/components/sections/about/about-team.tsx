@@ -53,24 +53,28 @@ const AboutTeam = () => {
       const root = container.current
       if (!root) return
 
-      gsap.from('.team-header > *', {
-        scrollTrigger: { trigger: root, start: 'top 80%' },
-        y: 30,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 1,
-        ease: 'power2.out',
-      })
-
-      gsap.utils.toArray<HTMLElement>('.team-card').forEach((card) => {
-        gsap.from(card, {
-          scrollTrigger: { trigger: card, start: 'top 90%' },
-          y: 40,
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.team-header > *', {
+          scrollTrigger: { trigger: root, start: 'top 80%' },
+          y: 30,
           opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
+          stagger: 0.12,
+          duration: 1,
+          ease: 'power2.out',
+        })
+
+        gsap.utils.toArray<HTMLElement>('.team-card').forEach((card) => {
+          gsap.from(card, {
+            scrollTrigger: { trigger: card, start: 'top 90%' },
+            y: 40,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+          })
         })
       })
+      return () => mm.revert()
     },
     { scope: container },
   )
@@ -127,9 +131,9 @@ const AboutTeam = () => {
                   </p>
                 </Stack>
 
-                {/* Quote — appears on hover */}
+                {/* Quote — visible by default (touch); lifts in on hover/focus on desktop */}
                 <div className="h-[1px] bg-border group-hover:bg-accent/30 transition-colors duration-500" />
-                <p className="accent text-sm text-muted-foreground leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                <p className="accent text-sm text-muted-foreground leading-relaxed transition-all duration-500 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-focus-within:opacity-100 md:group-focus-within:translate-y-0">
                   &ldquo;{member.quote}&rdquo;
                 </p>
               </div>

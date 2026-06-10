@@ -35,6 +35,7 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#coding files
+# coding / editor tooling
 /.agents
 /.claude
+/.cursor

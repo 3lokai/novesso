@@ -18,52 +18,57 @@ const Philosophy = () => {
     const root = sectionRef.current
     if (!root) return
 
-    const textElements = gsap.utils.toArray('.phi-text > *', root)
-    const imageElements = gsap.utils.toArray('.phi-image', root)
-    const parallaxLayers = gsap.utils.toArray('.phi-image-parallax', root)
+    // Content is visible by default; reveals + parallax only run when motion is welcome.
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const textElements = gsap.utils.toArray('.phi-text > *', root)
+      const imageElements = gsap.utils.toArray('.phi-image', root)
+      const parallaxLayers = gsap.utils.toArray('.phi-image-parallax', root)
 
-    gsap.from(textElements, {
-      scrollTrigger: {
-        trigger: root,
-        start: 'top 80%',
-      },
-      y: 30,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 1,
-      ease: 'power2.out',
-    })
-
-    gsap.from(imageElements, {
-      scrollTrigger: {
-        trigger: root,
-        start: 'top 60%',
-      },
-      y: (i) => (i % 2 === 0 ? 40 : -40),
-      opacity: 0,
-      stagger: 0.2,
-      duration: 1.2,
-      ease: 'power3.out',
-    })
-
-    const parallaxRangePx = [48, 72, 56]
-    parallaxLayers.forEach((el, i) => {
-      const range = parallaxRangePx[i] ?? 60
-      gsap.fromTo(
-        el as Element,
-        { y: -range },
-        {
-          y: range,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: root,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-          },
+      gsap.from(textElements, {
+        scrollTrigger: {
+          trigger: root,
+          start: 'top 80%',
         },
-      )
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: 'power2.out',
+      })
+
+      gsap.from(imageElements, {
+        scrollTrigger: {
+          trigger: root,
+          start: 'top 60%',
+        },
+        y: (i) => (i % 2 === 0 ? 40 : -40),
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1.2,
+        ease: 'power3.out',
+      })
+
+      const parallaxRangePx = [48, 72, 56]
+      parallaxLayers.forEach((el, i) => {
+        const range = parallaxRangePx[i] ?? 60
+        gsap.fromTo(
+          el as Element,
+          { y: -range },
+          {
+            y: range,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: root,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1,
+            },
+          },
+        )
+      })
     })
+    return () => mm.revert()
   }, { scope: sectionRef })
 
   return (

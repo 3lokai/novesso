@@ -42,24 +42,28 @@ const Process = () => {
   const [active, setActive] = React.useState(0)
 
   useGSAP(() => {
-    gsap.from('.process-header > *', {
-      scrollTrigger: { trigger: container.current, start: 'top 80%' },
-      y: 30,
-      opacity: 0,
-      stagger: 0.12,
-      duration: 1,
-      ease: 'power2.out',
-    })
-
-    gsap.utils.toArray<HTMLElement>('.phase-item').forEach((item) => {
-      gsap.from(item, {
-        scrollTrigger: { trigger: item, start: 'top 90%' },
-        y: 20,
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.process-header > *', {
+        scrollTrigger: { trigger: container.current, start: 'top 80%' },
+        y: 30,
         opacity: 0,
-        duration: 0.8,
+        stagger: 0.12,
+        duration: 1,
         ease: 'power2.out',
       })
+
+      gsap.utils.toArray<HTMLElement>('.phase-item').forEach((item) => {
+        gsap.from(item, {
+          scrollTrigger: { trigger: item, start: 'top 90%' },
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        })
+      })
     })
+    return () => mm.revert()
   }, { scope: container })
 
   return (
@@ -80,14 +84,18 @@ const Process = () => {
           {/* Desktop: horizontal phases */}
           <div className="hidden md:grid md:grid-cols-4 border-t border-border">
             {PHASES.map((phase, i) => (
-              <div
+              <button
                 key={phase.n}
+                type="button"
+                aria-pressed={active === i}
                 className={[
-                  'phase-item group relative p-10 cursor-pointer border-b-2 transition-all duration-500',
+                  'phase-item group relative p-10 text-left border-b-2 transition-all duration-500 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent/40',
                   i < 3 ? 'border-r border-border' : '',
                   active === i ? 'border-b-accent bg-background' : 'border-b-transparent hover:bg-background/60',
                 ].join(' ')}
                 onMouseEnter={() => setActive(i)}
+                onFocus={() => setActive(i)}
+                onClick={() => setActive(i)}
               >
                 {/* Connecting line */}
                 <div className="absolute top-0 left-10 right-10 h-[1px] bg-accent/20 group-hover:bg-accent/50 transition-colors duration-500" />
@@ -104,7 +112,7 @@ const Process = () => {
                 ].join(' ')}>
                   {phase.body}
                 </p>
-              </div>
+              </button>
             ))}
           </div>
 

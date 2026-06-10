@@ -15,7 +15,7 @@ Marketing site for **Novesso** — contemporary interior design with an Italian 
 - **Home** (`/`) — hero, philosophy, systems, projects, credibility, CTA, and shared footer
 - **About** (`/about`) — story, values, team, CTA, footer
 - **Design system** (`/design`) — internal typography, cards, forms, and dialog showcase (`robots`: noindex)
-- **Global layout** — Cormorant Garamond, Jost, and EB Garamond (see `src/app/layout.tsx` and `src/app/globals.css`)
+- **Global layout** — Cormorant Garamond (titles), Montserrat (body/UI/nav), and EB Garamond Italic (accent/pull-quotes) (see `src/app/layout.tsx` and `src/app/typography.css`)
 - **Site chrome** — `PromoteHeader` (logo, catalog mega-menu, primary nav, theme toggle, mobile menu) and `Footer` (locations, map embed, social placeholders, contact details)
 - **Consultation modal** — enquiry entry point from the header (`ConsultationModal`)
 - **SEO** — centralized config in `src/lib/seo.ts` (`NEXT_PUBLIC_SITE_URL`), default metadata, Open Graph, Twitter cards, canonical URLs, dynamic Open Graph image (`src/app/opengraph-image.tsx`), JSON-LD (`Organization` + `WebSite` in `src/components/seo/json-ld.tsx`), `sitemap.xml` (home URL today — add entries as more pages ship), and `robots.txt` (disallows `/design`)

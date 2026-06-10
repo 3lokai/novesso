@@ -38,24 +38,28 @@ const IndiaAdvantage = () => {
   const container = React.useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    gsap.from('.india-header > *', {
-      scrollTrigger: { trigger: container.current, start: 'top 80%' },
-      y: 30,
-      opacity: 0,
-      stagger: 0.12,
-      duration: 1,
-      ease: 'power2.out',
-    })
-
-    gsap.utils.toArray<HTMLElement>('.india-card').forEach((card) => {
-      gsap.from(card, {
-        scrollTrigger: { trigger: card, start: 'top 90%' },
-        y: 40,
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.india-header > *', {
+        scrollTrigger: { trigger: container.current, start: 'top 80%' },
+        y: 30,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out',
+        stagger: 0.12,
+        duration: 1,
+        ease: 'power2.out',
+      })
+
+      gsap.utils.toArray<HTMLElement>('.india-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 90%' },
+          y: 40,
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+        })
       })
     })
+    return () => mm.revert()
   }, { scope: container })
 
   return (

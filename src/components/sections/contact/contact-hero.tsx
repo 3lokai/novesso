@@ -17,17 +17,22 @@ const ContactHero = () => {
     if (!container.current) return
     const targets = container.current.querySelectorAll('.hero-content > *')
 
-    gsap.fromTo(
-      targets,
-      { autoAlpha: 0, y: 30 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 1.2,
-        ease: 'expo.out',
-      }
-    )
+    // Content is visible by default; the reveal only runs when motion is welcome.
+    const mm = gsap.matchMedia()
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.fromTo(
+        targets,
+        { autoAlpha: 0, y: 30 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          stagger: 0.15,
+          duration: 1.2,
+          ease: 'expo.out',
+        }
+      )
+    })
+    return () => mm.revert()
   }, { scope: container })
 
   return (

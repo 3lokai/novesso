@@ -14,6 +14,9 @@ const AboutHero = () => {
 
   useGSAP(
     () => {
+      // Content is visible by default; the intro reveal only runs when motion is welcome.
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
       const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
 
       tl.from('.about-hero-label', {
@@ -59,6 +62,8 @@ const AboutHero = () => {
           },
           '-=0.5',
         )
+      })
+      return () => mm.revert()
     },
     { scope: container },
   )
